@@ -54,13 +54,14 @@ sort(val)->val
 val+2->val
 c(1:2,val)->val
 dataset[,val]->dataset
+#dataset represents a tidy dataset for this activity.
 
 #organize the data and aggregate information as it was required.
-unite(dataset,nome,c(1,2),sep="_",remove=TRUE)->dataset
-aggregate(dataset[,c(2:80)],list(dataset$nome),mean)->dataset
-separate(dataset,Group.1,into=c("SubjectID","Activity"),sep="_")->dataset
+unite(dataset,nome,c(1,2),sep="_",remove=TRUE)->dataset2
+aggregate(dataset2[,c(2:80)],list(dataset2$nome),mean)->dataset2
+separate(dataset2,Group.1,into=c("SubjectID","Activity"),sep="_")->dataset2
 #Write the result file.
-write.table(dataset,file="./UCI HAR Dataset/result.txt",row.names=FALSE)
+write.table(dataset2,file="./UCI HAR Dataset/result.txt",row.names=FALSE)
 
 
 
